@@ -6,40 +6,44 @@ All codes are written by myself, no other plugins are involved yet. Each `.vim` 
 
 ## One-key Compile
 
-[`plugin\my-compiler.vim`](/plugin/my-compiler.vim) provides **1-key compile & run** mappings depending on filetype. You can also set up option switches, which allows you to **switch with 1 key** between `-std=c++98`, `-std=c++11`, `-std=gnu++14` e.g.
+[`plugin\my-compiler.vim`](/plugin/my-compiler.vim) provides **1-key compile & run** mappings depending on filetype. You can also set up option switches, which allows you to **switch with 1 key** between e.g. `-std=c++98`, `-std=c++11`, `-std=gnu++14`.
 
 + `<F5>` Compile
 + `<F6>` Run
-+ `<F7>` Compile and Run
++ `<F7>` Compile and Run (=`<F5><F6>`)
 + `<F8>` Debug (gdb)
 
-In each function called by filetype autocmd, map these keys to define shell cmdlines. If no autocmd is called (e.g. plain text), they are default `<nop>`. Edit as following in to set up option switches.
+In each function, buffer-local nnoremap `<F5>` `<F6>` `<F8>` to appropriate cmdlines. By default, `<F5>` is `:up` and others are `<nop>`.
 
-`call s:Make('<key>', 'Option', '["opt1","opt2",...]')` makes a option switch list named `'Option'`.
+`call s:Switch('<key>', 'Name', ['opt1','opt2',...])` makes a option switch list named `'Name'`.
 
-Then by pressing `<key>`, you switch cyclically from "opt1" to "opt2" e.g. and a message is shown.
+Then by pressing `<key>`, you switch cyclically from "opt1" to "opt2" etc. and a message is shown.
 
-The value can then be obtained as a String by `s:Get('Option')`, which can be used in `:execute` to form a dynamic cmdline.
+The value can then be obtained as a String by `s:Get('Name')`, which can be used in `:execute` to form a dynamic cmdline.
 
-Note the List is writen in String form.
-`<key>` can also be a sequence of keys, just as used in `map`.  e.g. `'<leader>foo'`
+`call s:Compiler(...)` will automatically map `<F5>` correctly. Just write constant parts as String, and use List of Names to insert the current value of switches.
 
 For example
 ```vim
-call s:Make('<F4>', 'cppStandard', '["","-std=c++11","-std=gnu++14"]')
-nnoremap <F5> :up<CR>:exe '!g++ %:S -o "%<.exe"' <SID>Get('cppStandard')<CR>
+call s:Switch('<F4>', 'Standard', ['',' -std=c++11',' -std=gnu++14'])
+call s:Compiler('!g++ %:S -o "%<.exe"', ['Standard'])
 ```
+This in fact maps `<F5>` to `:up<CR>:exe '!g++ %:S -o "%<.exe"'.<SID>Get('Standard')<CR>`.
 Without hitting `<F4>`, compiling cmdline is `!g++ %:S -o "%<.exe"`.
 After hitting `<F4>` 2 times, cmdline becomes `!g++ %:S -o "%<.exe" -std=gnu++14`.
 
 For vimscript *Compile* means `:update` and *Run* means `:source %`. For batch / exe files *Run* means `:!%`. Thus for all filetype, `<F7>` means save all changes and try run it.
 
-Edit [`plugin\my-compiler.vim`](/plugin/my-compiler.vim) to meet your environment.
+`<key>` can also be a sequence of keys, just as used in `map` (e.g. `'<leader>foo'`).
+Switches of different filetypes can have same names, but those of same filetype can't.
+No extra space is inserted to cmdline, so I suggest keeping a space in front of every option values.
+
+Edit [`plugin\my-compiler.vim`](/plugin/my-compiler.vim) to meet your needs and environments.
 
 ## Auto Complete Pairs
 
 These are in [`_vimrc`](/_vimrc).
-*My `<leader>` is `<space>`, change it in `_vimrc` line 50.*
+*My `<leader>` is `<space>`, change it at line 50.*
 
 **Auto complete pairs** such as `()` `[]` `{}` `<>`. (`{}` and `<>` are disabled yet because 1-line `{}` and comparisons are common.)
 
@@ -52,7 +56,7 @@ In **normal** mode, `<leader>/` comments current line off. `<leader>dI` / `<lead
 ## Abbreviations
 
 These are in [`_vimrc`](/_vimrc).
-*My `<leader>` is `<space>`, change it in `_vimrc` line 50.*
+*My `<leader>` is `<space>`, change it at line 50.*
 These are on my own coding habit. Just delete it if you don't like.
 
 + `#i`,`#d` are short for `#include <`,`#define `.
@@ -73,13 +77,13 @@ Have fun with them!
 
 ## Practise
 
-Files under `practise\` arem my exercises and notes made while reading [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/).
+Files under `practise\` are my exercises and notes made while reading [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/).
 There is a grep-operator plugin and some supports for Potion Language.
 
 ## Known Bugs & Wanted Features
 
-May be done and may not. Pleased if you'd like to write and contribute.
+May be done in the future and may not. Pleased if you'd like to write and contribute.
 
 + **Inserting pairs** from visual mode doesn't work at the **last char of a line**.
-+ **Inserting pairs** should be rewritten as functions and **mapped as operators**, thus can also be used in normal mode, e.g. `<leader>(t;`.
++ **Inserting pairs** should be rewritten as functions and **mapped as operators**, thus can also be used in normal mode (e.g. `<leader>(t;`).
 + `inoremap <expr>` doesn't work well when nested in other maps where `<C-R>=` seems to work. (`_vimrc` line 75)
