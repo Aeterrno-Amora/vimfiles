@@ -1,6 +1,6 @@
 " Vim color file
 " Maintainer:	Joker
-" Last Change:	2018 Feb 27
+" Last Change:	2018 Dec 14
 
 " This customized color scheme uses a dark grey background.
 
@@ -15,6 +15,7 @@ hi Ignore guifg=#303234
 " Groups for syntax highlighting
 hi Constant guibg=NONE
 hi Special guibg=NONE
+hi Underlined guifg=White
 hi cIOFunction guifg=LightBlue
 hi link cCommentString cComment
 hi link cComment2String cComment

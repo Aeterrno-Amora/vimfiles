@@ -35,8 +35,11 @@ function! s:C()
 	nnoremap <buffer> <F8> :!gdb %:r:S<CR>
 endfunction
 
+" python {{{1
+autocmd FileType python nnoremap <buffer> <F6> :python %:S<CR>
+
 " vim, bat, sh, vb {{{1
-autocmd FileType vim nnoremap <buffer> <F6> :source %<CR>
+autocmd FileType vim nnoremap <buffer> <F6> :source %:S<CR>
 autocmd FileType dosbatch,sh,vb nnoremap <buffer> <F6> :!%:S<CR>
 " }}}
 
@@ -47,10 +50,11 @@ autocmd FileType dosbatch,sh,vb nnoremap <buffer> <F6> :!%:S<CR>
 " }
 " b:cpComplete {
 " 	'<key>':	"SetSwitch('<key>', ...)",
+" 	'Name':		"SetSwitch('<key>', ...)",
 " 	'Compiler':	"Compiler(...)"
 " }
 
-" Initialze. create empty Dictionaries
+" Initialize. create empty Dictionaries
 function! s:Init()
 	if !exists("b:cpComplete")
 		let b:cpSwitch = {}
@@ -62,7 +66,7 @@ endfunction
 function! SetSwitch(key, name, list)
 	" create an entry '<key>', which switches through ['opt',...], reset iter to 0
 	let b:cpSwitch[a:key] = {'name': a:name, 'list': a:list}
-	" record completion
+	" register completion
 	let rec = 'SetSwitch(' . string(a:key) . ', ' . string(a:name) . ', ' . string(a:list) . ')'
 	let b:cpComplete[a:name] = rec
 	let b:cpComplete[a:key] = rec

@@ -15,7 +15,7 @@ set autoindent cindent
 set shiftwidth=4 tabstop=4
 
 " colors & fonts
-set guifont=consolas:h15
+set guifont=consolas:h14
 let c_gnu = 1
 "let c_space_errors = 1	"高亮行末空格
 colorscheme Joker
@@ -25,7 +25,6 @@ set cursorline "行高亮	cursorcolumn列高亮
 " other options {{{2
 autocmd GUIEnter * simalt ~x "启动后最大化
 "set shortmess=atI "启动时不显示援助索马里儿童的提示
-cd E:\Informatics
 set mouse=a
 set autochdir "设当前文件目录为工作路径
 set nobackup
@@ -48,7 +47,6 @@ nnoremap <C-P> ofprintf(stderr,"\n");<ESC>4hi
 nmap <leader>std i#icstdio><CR><CR><CR><CR>int main() {<CR>return 0;<CR>}<ESC>3G
 nmap <leader>exm <leader>std5Gofreopen(".in","r",stdin);<CR>freopen(".out","w",stdout);<ESC>6G9li
 nmap <leader>ckr <leader>std2Gi#ictime><CR>#icstdlib><CR>#iwindows.h><ESC>7Gosrand( time(NULL) );<CR>for (int t = 1; t <= 100; t++) {<CR>FILE *f = fopen(NAME ".in","w");<CR>int n = rand()%;<CR>fprintf(f,"%d\n",n);<CR>;<BS><CR>fclose(f);<CR>system(NAME ".exe < " NAME ".in > " NAME ".out");<CR>system(NAME "_bf.exe < " NAME ".in > " NAME ".ans");<CR>if ( system("fc " NAME ".out " NAME ".ans > " NAME ".log") ) {<CR>printf("Wrong Answer in Test %d\n",t);<CR>break;<CR>}<CR>else printf("Test %d Accepted.\n",t);<CR>}<ESC>5Gi#dNAME "
-nmap <leader>mod <leader>stdggotypedef long long ll;<CR>const ll MOD = ;<ESC>i
 " cmd abbreviations
 cabbrev vds vertical diffsplit
 
@@ -66,7 +64,7 @@ nnoremap <leader>d[ va[<ESC>`>X`<x
 nnoremap <leader>d{ va{<ESC>'>dd`<h2x
 nnoremap <leader>d" va"<ESC>`>X`<x
 nnoremap <leader>d' va'<ESC>`>X`<x
-nnoremap <leader>d/ ?/\*<CR>%h2xn2x:noh<CR>
+nnoremap <leader>d/ ^mz%02x'z2x
 " make / remove one-line comment
 nnoremap <leader>/ I//<ESC>
 nnoremap <leader>dI ^2x
