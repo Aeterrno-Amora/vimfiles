@@ -1,6 +1,6 @@
 " Vim color file
 " Maintainer:	Joker
-" Last Change:	2018 Feb 27
+" Last Change:	2019 Mar 14
 
 " This customized color scheme uses a dark grey background.
 
@@ -56,16 +56,18 @@ hi Error	guibg=#d51212 guifg=White
 hi Visual	guibg=#404e51 guifg=White
 " Gutter
 hi LineNr	guibg=#2f383c guifg=#6a8088
+hi clear CursorLineNr
+hi link	CursorLineNr	LineNr
 " Folding lines
-hi Folded	guibg=bg
-hi FoldColoumn	guifg=#c00000
-"hi cIOFunction guifg=LightBlue
+hi Folded	gui=underline guifg=NONE guibg=bg
+hi FoldColumn	guifg=#c00000 guibg=bg
 
 " Groups used in the 'highlight' and 'guicursor' options default value.
 hi Search gui=underline guibg=Blue guifg=NONE
 hi CursorLine guibg=Black
 hi CursorColumn guibg=Black
 hi NonText guibg=#2f383c
+hi EndOfBuffer guifg=#2f383c guibg=#2f383c
 hi Ignore guifg=bg
 
 " vim: sw=2 ts=8

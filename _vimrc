@@ -1,5 +1,5 @@
 ﻿" Author:	Joker
-" Last Change:	2019 Jan 20
+" Last Change:	2019 Feb 11
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
@@ -8,11 +8,12 @@ behave mswin
 " Options {{{1
 " view & display {{{2
 
-" windows & content & indent
+" windows & indent & fold
 set number ruler
-set showmatch matchtime=1
 set autoindent cindent
 set shiftwidth=4 tabstop=4
+set showmatch matchtime=1
+set foldmethod=marker
 
 " colors & fonts
 set guifont=consolas:h15
@@ -122,13 +123,12 @@ endf
 
 " }}}1
 
-" File Specific {{{1
+" File Specific {{{2
 augroup myFold
 	autocmd!
-	" use fold marker for vimscript
-	" pair complete '"' is annoying
-	autocmd FileType vim setlocal foldmethod=marker foldlevel=0 | inoremap <buffer> " "
+	" fold for vimscript, pair complete '"' is annoying
+	autocmd FileType vim setlocal foldlevel=0 | inoremap <buffer> " "
 augroup END
-" }}}1
+" }}}2
 
 " vim: foldcolumn=3 foldlevel=1

@@ -1,6 +1,6 @@
 " Vim color file
 " Maintainer:	Joker
-" Last Change:	2018 Feb 27
+" Last Change:	2019 Mar 14
 
 " This customized color scheme uses a blue background.
 
@@ -9,10 +9,10 @@ let c_no_curly_error = 1
 " Turn off detect of ansi constants and typedefs
 let c_no_ansi = 1
 
-" load the "evening" colorscheme
+" load the "blue" colorscheme
 runtime colors/blue.vim
 
-let colors_name = "Dev-Cpp"
+let colors_name = "Pascal"
 
 " Groups for syntax highlighting
 " Remove guibg=Black (in Version <= 7.4)
@@ -71,6 +71,6 @@ hi CursorColumn guibg=Black
 hi Ignore guifg=bg
 
 se nocursorline
-se gfn=fixedsys:h12
+se guifont=fixedsys:h12
 
 " vim: sw=2 ts=8

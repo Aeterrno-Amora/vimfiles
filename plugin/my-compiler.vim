@@ -1,5 +1,5 @@
 " Author: Joker
-" Last Change: 2018 Dec 31
+" Last Change: 2019 Mar 14
 
 nnoremap <F5> :up<CR>
 nnoremap <F6> <nop>
@@ -17,9 +17,10 @@ autocmd!
 autocmd FileType cpp call s:Cpp()
 function! s:Cpp()
 	call s:Init()
-	call SetSwitch('<F3>', 'Standard', [' -std=gnu++14',' -std=c++98',' -std=c++11'])
+	call SetSwitch('<F3>', 'Standard', [' -std=gnu++14',' -std=c++98 -ansi -pendantic',' -std=c++11'])
 	call SetSwitch('<F4>', 'Optimize', [' -O2','',' -Ofast -march=native',' -pg -O2'])
-	call Compiler('!g++ %:S -o "%<.exe" -Wall -Wextra -Wconversion -Wl,--stack=104857600',['Standard','Optimize'])
+	call SetSwitch('<C-F4>', 'Santitize', ['',' -fsanitize=address -fsanitize=undefined'])
+	call Compiler('!g++ %:S -o "%<.exe" -Wall -Wextra -Wconversion -Wl,--stack=104857600',['Santitize','Standard','Optimize'])
 	nnoremap <buffer> <F6> :!"%<.exe"<CR>
 	nnoremap <buffer> <F8> :!gdb %:r:S<CR>
 endfunction
@@ -36,7 +37,7 @@ function! s:C()
 endfunction
 
 " python {{{1
-autocmd FileType python nnoremap <buffer> <F6> :python %:S<CR>
+autocmd FileType python nnoremap <buffer> <F6> :!python %:S<CR>
 
 " vim, bat, sh, vb {{{1
 autocmd FileType vim nnoremap <buffer> <F6> :source %:S<CR>
