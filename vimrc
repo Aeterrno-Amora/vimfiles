@@ -61,6 +61,7 @@ nmap <leader>ckr <leader>std2Gi#ictime><CR>#icstdlib><CR>#iwindows.h><ESC>7Gosra
 nmap <leader>mod <leader>stdggotypedef long long ll;<CR>const ll MOD = ;<ESC>i
 " cmd abbreviations
 cabbrev vds vertical diffsplit
+command -nargs=1 -bar E w %:t:s?\.?<args>.?|e #
 
 " pairwise insert & remove {{{2
 " insert from visual mode
