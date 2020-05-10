@@ -1,9 +1,0 @@
-se nu ru
-se ai ci
-se sw=4 ts=4
-se acd nobk
-se mouse=a
-
-nmap <F5> :up<CR>:!g++ %:S -o %:r:S -Wall -Wextra -Wconversion && size<CR>
-nmap <F6> :!time ./%:r:S<CR>
-nmap <F7> :up<CR>:!g++ %:S -o %:r:S -Wall -Wextra -Wconversion && size && time ./%:r:S<CR>

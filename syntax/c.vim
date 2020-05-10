@@ -1,9 +1,6 @@
-" Vim syntax file
+" supplementary syntax file
 " Language:	C
-" Maintainer:	Joker
 " Last Change:	2019 Mar 2
-
-" add on for c syntax
 
 syn match	cSoftTab	"    "
 hi def link	cSoftTab	cSpaceError

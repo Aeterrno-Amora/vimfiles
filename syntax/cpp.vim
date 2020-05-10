@@ -1,6 +1,5 @@
-" Vim syntax file
+" supplementary syntax file
 " Language:	C++
-" Maintainer:	Joker
 " Last Change:	2018 Jun 22
 
 syn keyword cppIOFunction	cin cout cerr

@@ -1,6 +1,3 @@
-﻿" Author:	Joker
-" Last Change:	2020 Jan 28
-
 set encoding=utf-8
 
 source $VIMRUNTIME/vimrc_example.vim
@@ -8,7 +5,7 @@ source $VIMRUNTIME/mswin.vim
 behave mswin
 
 " Options {{{1
-" display {{{2
+" vim options {{{2
 
 " indent, fold
 set number relativenumber ruler
@@ -20,27 +17,23 @@ set foldmethod=marker
 " fonts, syntax
 set guifont=consolas:h14
 let c_gnu = 1
-"let c_space_errors = 1	"高亮行末空格
+"let c_space_errors = 1	"hilight spaces at EOL
 colorscheme Joker
-set cursorline "行高亮	cursorcolumn列高亮
+set cursorline
 
 " encoding
+" must set 'encoding' before everything, or it will garble
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,default,latin1
-"set langmenu=zh_CN.utf-8	"解决enc=untf-8导致的菜单乱码
-"language message zh_CN.utf-8
-"source $VIMRUNTIME/delmenu.vim
-"source $VIMRUNTIME/menu.vim
 
-" other options {{{2
+" other options
 autocmd GUIEnter * simalt ~x "启动后最大化
 "set shortmess=atI "启动时不显示援助索马里儿童的提示
 cd D:\Tsinghua
 set mouse=a
-set autochdir "设当前文件目录为工作路径
-set nobackup
-set history=200
-set undodir=~\vimfiles\undo "un~文件会被统一写入此目录，不会四处分散
+set autochdir
+set nobackup history=200 undodir=~\vimfiles\undo
 set vb t_vb= "去掉命令错误时发出的一个响声
+
 " }}}1
 
 " Mappings {{{1

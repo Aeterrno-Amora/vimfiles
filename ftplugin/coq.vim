@@ -1,6 +1,3 @@
-" Author:	Joker
-" Last Change:	2020 Feb 14
-
 nnoremap <buffer> <F5> :up<CR>:!coqc -Q . LF %:S<CR>
 nnoremap <buffer> <F7> <nop>
 
