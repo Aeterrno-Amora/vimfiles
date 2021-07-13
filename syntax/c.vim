@@ -3,7 +3,7 @@
 " Last Change:	2019 Mar 2
 
 syn match	cSoftTab	"    "
-hi def link	cSoftTab	cSpaceError
+"hi def link	cSoftTab	cSpaceError
 
 syn keyword	cIOFunction	scanf printf fscanf fprintf sscanf sprintf gets puts fgets fputs getchar putchar getch
 hi def link	cIOFunction	cFunction

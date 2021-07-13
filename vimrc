@@ -12,7 +12,7 @@ set number relativenumber ruler
 set autoindent cindent
 set shiftwidth=4 tabstop=4
 set showmatch matchtime=1
-set foldmethod=marker
+set fillchars=fold:\  foldmethod=marker 
 
 " fonts, syntax
 set guifont=consolas:h14
@@ -31,14 +31,46 @@ autocmd GUIEnter * simalt ~x "启动后最大化
 cd D:\Tsinghua
 set mouse=a
 set autochdir
+set pythonthreedll=python39.dll
 set nobackup history=200 undodir=~\vimfiles\undo
 set vb t_vb= "去掉命令错误时发出的一个响声
+
+" UltiSnips {{{2
+command! -nargs=* US UltiSnips<args>
+let g:UltiSnipsEditSplit = "context"
 
 " }}}1
 
 " Mappings {{{1
 let mapleader = " "
 set maxmapdepth=256
+
+" correct mistakes with input method switch {{{2
+map ￥ $
+map …… ^
+map —— _
+map 【 [
+map 】 ]
+map （ (
+map ） )
+map 《 <
+map 》 >
+map ： :
+map ； ;
+map ？ ?
+map 、 \
+map ， ,
+map 。 .
+map ！ !
+map “ "
+map ” "
+map ‘ '
+map ’ '
+map · `
+map! ￥ $
+map! 【 [
+map! 】 ]
+map! · `
 
 " daily abbreviations {{{2
 inoremap <C-BS> <ESC>diwa
