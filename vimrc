@@ -1,8 +1,6 @@
 set encoding=utf-8
 
 source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
 
 " Options {{{1
 " vim options {{{2
@@ -28,11 +26,8 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,default,latin1
 " other options
 autocmd GUIEnter * simalt ~x "启动后最大化
 "set shortmess=atI "启动时不显示援助索马里儿童的提示
-cd D:\Tsinghua
 set mouse=a
-set autochdir
-set pythonthreedll=python39.dll
-set nobackup history=200 undodir=~\vimfiles\undo
+set nobackup history=200 undodir=~/.vim/undo
 set vb t_vb= "去掉命令错误时发出的一个响声
 
 " UltiSnips {{{2
