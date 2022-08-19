@@ -153,7 +153,7 @@ endf
 " File Specific {{{2
 augroup myFileCmd
 	autocmd!
-	autocmd FileType html,vim,md,tex,coq* setlocal shiftwidth=2
+	autocmd FileType html,css,vim,md,tex,coq* setlocal shiftwidth=2
 	" html: complete <>
 	autocmd FileType html inoremap <buffer> < <lt>><LEFT>| inoremap <buffer> > <c-r>=ClosePair('>')<CR>
 	" vimscript: folding, don't complete ""
