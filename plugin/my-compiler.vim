@@ -42,7 +42,7 @@ autocmd FileType python nnoremap <buffer> <F6> :!python %:S<CR>
 " TeX {{{1
 autocmd FileType tex call s:TeX()
 function! s:TeX()
-	nnoremap <buffer> <F5> :up<CR>:!xelatex %:r:S<CR>
+	nnoremap <buffer> <F5> :up<CR>:!xelatex -halt-on-error -file-line-error -synctex=1 %:r:S<CR>
 	nnoremap <buffer> <C-F5> :!bibtex %:r:S<CR>
 	nnoremap <buffer> <F6> :!start "%<.pdf"<CR>
 endfunction
