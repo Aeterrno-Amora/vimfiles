@@ -24,11 +24,17 @@ set cursorline
 " encoding
 " must set 'encoding' before everything, or it will garble
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,default,latin1
+" PowerShell has encoding issues when working with external programs and files
+" Therefore prefer cmd instead.
+" If using PowerShell, 'shellpipe' 'shellredir' should match 'encoding'.
+"set shell=powershell
+"set shellpipe=2>&1\ \|\ Out-File\ -Encoding\ utf8
+"set shellredir=2>&1\ \|\ Out-File\ -Encoding\ utf8
 
 " other options
 autocmd GUIEnter * simalt ~x "启动后最大化
 "set shortmess=atI "启动时不显示援助索马里儿童的提示
-cd D:\Tsinghua
+cd C:\Tsinghua
 set mouse=a
 set autochdir
 set pythonthreedll=python39.dll

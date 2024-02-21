@@ -1,5 +1,5 @@
 " Author: Joker
-" Last Change: 2019 Nov 23
+" Last Change: 2024 Feb 21
 
 nnoremap <F5> :up<CR>
 nnoremap <F6> <nop>
@@ -47,11 +47,21 @@ function! s:TeX()
 	nnoremap <buffer> <F6> :!start "%<.pdf"<CR>
 endfunction
 
-" vim, bat, sh, vb {{{1
+" vim, bat, sh, vb, reg {{{1
 autocmd FileType vim nnoremap <buffer> <F6> :source %:S<CR>
 autocmd FileType dosbatch,sh,vb nnoremap <buffer> <F6> :!%:S<CR>
+autocmd FileType registry call s:Registry()
+function! s:Registry()
+	if filewritable('C:\Windows\System32') " with admin rights
+		nnoremap <buffer> <F6> :!reg import %:S<CR>
+	else " without admin rights, call UAC by Start-Process -Verb RunAs
+		nnoremap <buffer> <F6> :!powershell -Command "Start-Process -FilePath reg -ArgumentList \"import %:S\" -Verb RunAs"<CR>
+	endif
+endfunction
 " }}}
 " coq: refer to ftplugin
+
+augroup END
 
 " helper functions {{{
 
@@ -130,5 +140,3 @@ function! s:MyComplete(ArgLead, CmdLine, CursorPos)
 	return filter(keys(b:cpComplete), "v:val =~? a:ArgLead")
 endfunction
 "}}}
-
-augroup END
