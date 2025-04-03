@@ -13,7 +13,7 @@ set showmatch matchtime=1
 set fillchars=fold:\  foldmethod=marker 
 
 " fonts, syntax
-set guifont=consolas:h14
+" set guifont=consolas:h14
 let c_gnu = 1
 "let c_space_errors = 1	"hilight spaces at EOL
 colorscheme Joker
@@ -24,8 +24,6 @@ set cursorline
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,default,latin1
 
 " other options
-autocmd GUIEnter * simalt ~x "启动后最大化
-"set shortmess=atI "启动时不显示援助索马里儿童的提示
 set mouse=a
 set nobackup history=200 undodir=~/.vim/undo
 set vb t_vb= "去掉命令错误时发出的一个响声
