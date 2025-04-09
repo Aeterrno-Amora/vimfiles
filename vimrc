@@ -7,12 +7,13 @@ behave mswin
 " Options {{{1
 " vim options {{{2
 
-" indent, fold
+" indent, fold, title
 set number relativenumber ruler
 set autoindent cindent
 set shiftwidth=4 tabstop=4
 set showmatch matchtime=1
 set fillchars=fold:\  foldmethod=marker 
+set title
 
 " fonts, syntax
 set guifont=consolas:h14
