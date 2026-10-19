@@ -20,9 +20,9 @@ function! s:Cpp()
 	call SetSwitch('<F3>', 'Standard', [' -std=gnu++14',' -std=c++98 -ansi',' -std=c++11'])
 	call SetSwitch('<F4>', 'Optimize', [' -O2','',' -Ofast -march=native',' -pg -O2'])
 	call SetSwitch('<C-F4>', 'Santitize', ['',' -fsanitize=address -fsanitize=undefined'])
-	call Compiler('!g++ %:S -o "%<.exe" -Wall -Wextra -Wconversion -Wl,--stack=104857600',['Santitize','Standard','Optimize'])
-	nnoremap <buffer> <F6> :!"%<.exe"<CR>
-	nnoremap <buffer> <F8> :!gdb %:r:S<CR>
+	call Compiler('!g++ %:S -o "%<.exe" -Wall -Wextra -Wconversion',['Santitize','Standard','Optimize'])
+	nnoremap <buffer> <F6> :!ulimit -s unlimited; "%:p:r.exe"<CR>
+	nnoremap <buffer> <F8> :!gdb "%:p:r.exe"<CR>
 endfunction
 
 " c {{{1
@@ -31,25 +31,25 @@ function! s:C()
 	call s:Init()
 	call SetSwitch('<F3>', 'Standard', ['',' -std=c11'])
 	call SetSwitch('<F4>', 'Optimize', [' -O2','',' -Ofast'])
-	call Compiler('!gcc %:S -o "%<.exe" -Wall -Wextra -Wconversion -Wl,--stack=104857600',['Standard','Optimize'])
-	nnoremap <buffer> <F6> :!"%<.exe"<CR>
-	nnoremap <buffer> <F8> :!gdb %:r:S<CR>
+	call Compiler('!gcc %:S -o "%<.exe" -Wall -Wextra -Wconversion',['Standard','Optimize'])
+	nnoremap <buffer> <F6> :!ulimit -s unlimited; "%:p:r.exe"<CR>
+	nnoremap <buffer> <F8> :!gdb "%:p:r.exe"<CR>
 endfunction
 
 " python {{{1
-autocmd FileType python nnoremap <buffer> <F6> :!python %:S<CR>
+autocmd FileType python nnoremap <buffer> <F6> :!python3 %:S<CR>
 
 " TeX {{{1
 autocmd FileType tex call s:TeX()
 function! s:TeX()
 	nnoremap <buffer> <F5> :up<CR>:!xelatex -halt-on-error -file-line-error -synctex=1 %:r:S<CR>
 	nnoremap <buffer> <C-F5> :!bibtex %:r:S<CR>
-	nnoremap <buffer> <F6> :!start "%<.pdf"<CR>
+	nnoremap <buffer> <F6> :!xdg-open "%<.pdf"<CR>
 endfunction
 
-" vim, bat, sh, vb {{{1
+" vim, sh {{{1
 autocmd FileType vim nnoremap <buffer> <F6> :source %:S<CR>
-autocmd FileType dosbatch,sh,vb nnoremap <buffer> <F6> :!%:S<CR>
+autocmd FileType sh nnoremap <buffer> <F6> :!bash %:S<CR>
 " }}}
 " coq: refer to ftplugin
 

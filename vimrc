@@ -77,7 +77,7 @@ nnoremap <C-P> ofprintf(stderr,"\n");<ESC>4hi
 " defult templates
 nmap <leader>std i#icstdio><CR><CR><CR><CR>int main() {<CR>return 0;<CR>}<ESC>3G
 nmap <leader>exm <leader>std5Gofreopen(".in","r",stdin);<CR>freopen(".out","w",stdout);<ESC>6G9li
-nmap <leader>ckr <leader>std2Gi#ictime><CR>#icstdlib><CR>#iwindows.h><ESC>7Gosrand( time(NULL) );<CR>for (int t = 1; t <= 100; t++) {<CR>FILE *f = fopen(NAME ".in","w");<CR>int n = rand()%;<CR>fprintf(f,"%d\n",n);<CR>;<BS><CR>fclose(f);<CR>system(NAME ".exe < " NAME ".in > " NAME ".out");<CR>system(NAME "_bf.exe < " NAME ".in > " NAME ".ans");<CR>if ( system("fc " NAME ".out " NAME ".ans > " NAME ".log") ) {<CR>printf("Wrong Answer in Test %d\n",t);<CR>break;<CR>}<CR>else printf("Test %d Accepted.\n",t);<CR>}<ESC>5Gi#dNAME "
+nmap <leader>ckr <leader>std2Gi#ictime><CR>#icstdlib><ESC>6Gosrand( time(NULL) );<CR>for (int t = 1; t <= 100; t++) {<CR>FILE *f = fopen(NAME ".in","w");<CR>int n = rand()%;<CR>fprintf(f,"%d\n",n);<CR>;<BS><CR>fclose(f);<CR>system("./" NAME ".exe < " NAME ".in > " NAME ".out");<CR>system("./" NAME "_bf.exe < " NAME ".in > " NAME ".ans");<CR>if ( system("diff " NAME ".out " NAME ".ans > " NAME ".log") ) {<CR>printf("Wrong Answer in Test %d\n",t);<CR>break;<CR>}<CR>else printf("Test %d Accepted.\n",t);<CR>}<ESC>4Gi#dNAME "
 nmap <leader>mod <leader>stdggotypedef long long ll;<CR>const ll MOD = ;<ESC>i
 " cmd abbreviations
 cabbrev vds vertical diffsplit
