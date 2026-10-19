@@ -40,6 +40,7 @@ set mouse=a
 set autochdir
 set pythonthreedll=python39.dll
 set nobackup history=200 undodir=~\vimfiles\undo
+if !isdirectory(expand(&undodir)) | call mkdir(expand(&undodir), 'p') | endif
 set vb t_vb= "去掉命令错误时发出的一个响声
 
 " UltiSnips {{{2
