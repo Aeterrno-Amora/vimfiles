@@ -15,6 +15,7 @@ set title
 
 " fonts, syntax
 " set guifont=consolas:h14
+set guifont=Menlo:h14 "MacVim; consolas is not on macOS
 let c_gnu = 1
 "let c_space_errors = 1	"hilight spaces at EOL
 colorscheme Joker

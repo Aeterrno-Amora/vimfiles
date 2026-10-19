@@ -20,9 +20,9 @@ function! s:Cpp()
 	call SetSwitch('<F3>', 'Standard', [' -std=gnu++14',' -std=c++98 -ansi',' -std=c++11'])
 	call SetSwitch('<F4>', 'Optimize', [' -O2','',' -Ofast -march=native',' -pg -O2'])
 	call SetSwitch('<C-F4>', 'Santitize', ['',' -fsanitize=address -fsanitize=undefined'])
-	call Compiler('!g++ %:S -o "%<.exe" -Wall -Wextra -Wconversion',['Santitize','Standard','Optimize'])
-	nnoremap <buffer> <F6> :!ulimit -s unlimited; "%:p:r.exe"<CR>
-	nnoremap <buffer> <F8> :!gdb "%:p:r.exe"<CR>
+	call Compiler('!g++ %:S -o "%<.exe" -Wall -Wextra -Wconversion -Wl,-stack_size,0x6400000',['Santitize','Standard','Optimize'])
+	nnoremap <buffer> <F6> :!"%:p:r.exe"<CR>
+	nnoremap <buffer> <F8> :!lldb "%:p:r.exe"<CR>
 endfunction
 
 " c {{{1
@@ -31,9 +31,9 @@ function! s:C()
 	call s:Init()
 	call SetSwitch('<F3>', 'Standard', ['',' -std=c11'])
 	call SetSwitch('<F4>', 'Optimize', [' -O2','',' -Ofast'])
-	call Compiler('!gcc %:S -o "%<.exe" -Wall -Wextra -Wconversion',['Standard','Optimize'])
-	nnoremap <buffer> <F6> :!ulimit -s unlimited; "%:p:r.exe"<CR>
-	nnoremap <buffer> <F8> :!gdb "%:p:r.exe"<CR>
+	call Compiler('!gcc %:S -o "%<.exe" -Wall -Wextra -Wconversion -Wl,-stack_size,0x6400000',['Standard','Optimize'])
+	nnoremap <buffer> <F6> :!"%:p:r.exe"<CR>
+	nnoremap <buffer> <F8> :!lldb "%:p:r.exe"<CR>
 endfunction
 
 " python {{{1
@@ -44,7 +44,7 @@ autocmd FileType tex call s:TeX()
 function! s:TeX()
 	nnoremap <buffer> <F5> :up<CR>:!xelatex -halt-on-error -file-line-error -synctex=1 %:r:S<CR>
 	nnoremap <buffer> <C-F5> :!bibtex %:r:S<CR>
-	nnoremap <buffer> <F6> :!xdg-open "%<.pdf"<CR>
+	nnoremap <buffer> <F6> :!open "%<.pdf"<CR>
 endfunction
 
 " vim, sh {{{1
