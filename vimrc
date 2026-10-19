@@ -5,12 +5,13 @@ source $VIMRUNTIME/vimrc_example.vim
 " Options {{{1
 " vim options {{{2
 
-" indent, fold
+" indent, fold, title
 set number relativenumber ruler
 set autoindent cindent
 set shiftwidth=4 tabstop=4
 set showmatch matchtime=1
 set fillchars=fold:\  foldmethod=marker 
+set title
 
 " fonts, syntax
 " set guifont=consolas:h14
@@ -26,6 +27,7 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,default,latin1
 " other options
 set mouse=a
 set nobackup history=200 undodir=~/.vim/undo
+if !isdirectory(expand(&undodir)) | call mkdir(expand(&undodir), 'p') | endif
 set vb t_vb= "去掉命令错误时发出的一个响声
 
 " UltiSnips {{{2

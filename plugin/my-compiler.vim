@@ -1,5 +1,5 @@
 " Author: Joker
-" Last Change: 2019 Nov 23
+" Last Change: 2024 Feb 21
 
 nnoremap <F5> :up<CR>
 nnoremap <F6> <nop>
@@ -52,6 +52,8 @@ autocmd FileType vim nnoremap <buffer> <F6> :source %:S<CR>
 autocmd FileType dosbatch,sh,vb nnoremap <buffer> <F6> :!%:S<CR>
 " }}}
 " coq: refer to ftplugin
+
+augroup END
 
 " helper functions {{{
 
@@ -130,5 +132,3 @@ function! s:MyComplete(ArgLead, CmdLine, CursorPos)
 	return filter(keys(b:cpComplete), "v:val =~? a:ArgLead")
 endfunction
 "}}}
-
-augroup END
